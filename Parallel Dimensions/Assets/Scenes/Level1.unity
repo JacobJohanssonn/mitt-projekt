@@ -136,7 +136,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &43147043
 RectTransform:
   m_ObjectHideFlags: 0
@@ -144,13 +144,13 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 43147042}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.5, y: 0.8, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1926425381}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: -490, y: 0}
@@ -7862,7 +7862,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1191481071
 RectTransform:
   m_ObjectHideFlags: 0
@@ -9544,8 +9544,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d835f71324c2ac64bb88f181bd25bd5d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Gates
-  openGate: {fileID: -1428424406, guid: 9c53ae4fe6bac62428cd52d206ac5a24, type: 3}
-  closeGate: {fileID: 391063449, guid: 9c53ae4fe6bac62428cd52d206ac5a24, type: 3}
+  openGate: {fileID: 0}
+  closeGate: {fileID: 1887494081247492234, guid: a0c9526119eccd54aaf7c2aa84209317, type: 3}
 --- !u!61 &1671891257
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -9580,17 +9580,17 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: -0.008440614, y: -0.0112544}
+  m_Offset: {x: -0.0026459135, y: 0.00323236}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1, y: 1}
+    oldSize: {x: 0.13, y: 0.14}
     newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 1.0186236, y: 0.96797866}
+  m_Size: {x: 0.15328044, y: 0.1547879}
   m_EdgeRadius: 0
 --- !u!212 &1671891258
 SpriteRenderer:
@@ -9641,7 +9641,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 1
   m_MaskInteraction: 0
-  m_Sprite: {fileID: 391063449, guid: 9c53ae4fe6bac62428cd52d206ac5a24, type: 3}
+  m_Sprite: {fileID: 1887494081247492234, guid: a0c9526119eccd54aaf7c2aa84209317, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -9662,7 +9662,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 4.5, y: -0.5, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 7, y: 7, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 998499868}
