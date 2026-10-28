@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
@@ -8,6 +9,8 @@ public class Select_UI : MonoBehaviour
 {
     public List<Transform> Buttons = new List<Transform>();
     public Transform Select_Button;
+
+    public AudioSource SelectAudio;
     int i = 2;
 
     public Controller controller;
@@ -49,17 +52,26 @@ public class Select_UI : MonoBehaviour
 
     public void Continue()
     {
+        SelectAudio.Play();
         controller.Pause(false);
     }
 
     public void Restart()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        SelectAudio.Play();
+        StartCoroutine(SceneAfterSound(SceneManager.GetActiveScene().name));
     }
 
     public void Quit()
     {
-        PlayerPrefs.SetString("SceneToLoad", "MainMenu");
+        SelectAudio.Play();
+        StartCoroutine(SceneAfterSound("MainMenu"));
+    }
+
+    private System.Collections.IEnumerator SceneAfterSound(string scene)
+    {
+        yield return new WaitForSeconds(SelectAudio.clip.length);
+        PlayerPrefs.SetString("SceneToLoad", scene);
         SceneManager.LoadScene("LoadingScreen");
     }
 

@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
@@ -8,6 +9,7 @@ public class DefeatMenu : MonoBehaviour
 {
     public List<Transform> Buttons = new List<Transform>();
     public Transform Select_Button;
+    public AudioSource SelectAudio;
     int i = 0;
 
     // Update is called once per frame
@@ -44,12 +46,21 @@ public class DefeatMenu : MonoBehaviour
 
     public void Restart()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        SelectAudio.Play();
+        StartCoroutine(SceneAfterSound(SceneManager.GetActiveScene().name));
     }
 
     public void Quit()
     {
-        SceneManager.LoadScene("MainMenu");
+        SelectAudio.Play();
+        StartCoroutine(SceneAfterSound("MainMenu"));
+    }
+
+    private System.Collections.IEnumerator SceneAfterSound(string scene)
+    {
+        yield return new WaitForSeconds(SelectAudio.clip.length);
+        PlayerPrefs.SetString("SceneToLoad", scene);
+        SceneManager.LoadScene("LoadingScreen");
     }
 
     public void Hover(int buttonNumber)

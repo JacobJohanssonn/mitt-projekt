@@ -8,7 +8,7 @@ public class CompleteMenu : MonoBehaviour
 {
     public List<Transform> Buttons = new List<Transform>();
     public Transform Select_Button;
-
+    public AudioSource SelectAudio;
     public TMP_Text level_label;
     int i = 0;
 
@@ -56,9 +56,10 @@ public class CompleteMenu : MonoBehaviour
         string LevelNext = SceneManager.GetActiveScene().name;
         int number = int.Parse(LevelNext.Replace("Level", ""));
         number++;
+        SelectAudio.Play();
         if (Application.CanStreamedLevelBeLoaded("Level" + number))
         {
-            SceneManager.LoadScene("Level" + number);            
+            StartCoroutine(SceneAfterSound("Level" + number));            
         }
         else
         {
@@ -68,7 +69,15 @@ public class CompleteMenu : MonoBehaviour
 
     public void Quit()
     {
-        SceneManager.LoadScene("MainMenu");
+        SelectAudio.Play();
+        StartCoroutine(SceneAfterSound("MainMenu"));
+    }
+
+    private System.Collections.IEnumerator SceneAfterSound(string scene)
+    {
+        yield return new WaitForSeconds(SelectAudio.clip.length);
+        PlayerPrefs.SetString("SceneToLoad", scene);
+        SceneManager.LoadScene("LoadingScreen");
     }
 
     public void Hover(int buttonNumber)

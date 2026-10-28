@@ -15,6 +15,8 @@ public class Controller : MonoBehaviour
 
     public Transform view;
 
+    private AudioSource moveSound;
+
     private bool isFlipped = false;
 
     private enum States
@@ -33,6 +35,7 @@ public class Controller : MonoBehaviour
     
     void Start()
     {
+        moveSound = gameObject.GetComponent<AudioSource>();
         foreach (Transform child in transform)
         {
             if(child.gameObject.GetComponent<PlayerController>() != null)
@@ -47,6 +50,7 @@ public class Controller : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        textMesh.GetComponent<TMP_Text>().text = movementLimit.ToString();
         finished = players.All(obj =>
             obj.GetComponent<PlayerController>().State == PlayerController.States.Finished);
 
@@ -85,7 +89,6 @@ public class Controller : MonoBehaviour
         if(State != States.Pause)
         {
             Pause(false);
-            textMesh.GetComponent<TMP_Text>().text = movementLimit.ToString();
 
             int horizontalInput = 0;
             int verticalInput = 0;
@@ -125,6 +128,7 @@ public class Controller : MonoBehaviour
 
                 if (anyMoved)
                 {
+                    moveSound.Play();
                     movementLimit -= 1f;
                 }
             }
